@@ -21,7 +21,8 @@ const AddTodoForm = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-          type="text" className="flex-1 px-4 py-2 border rounded-lg" id="" />
+          type="text" 
+          className="flex-1 px-4 py-2 border dark:text-white rounded-lg" id="" />
         <button 
           onClick={handleSubmit}
           className='px-4 py-2 bg-emerald-600 hover:bg-emerald-800 rounded-lg flex font-bold text-white '>

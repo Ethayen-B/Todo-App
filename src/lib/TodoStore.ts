@@ -2,6 +2,7 @@ import { create } from "zustand";
 import type { Todo } from "../types/todo";
 import { persist } from "zustand/middleware";
 
+
 interface TodoStore{
     todos: Todo[],
     addTodo: (text: string) => void,
@@ -10,6 +11,7 @@ interface TodoStore{
     updateTodo: (id:string, text: string) => void,
     getTodosStat: () => {total:number; active: number; completed: number};
 }
+
 
 export const useTodoStore = create<TodoStore>()(
     persist(
@@ -56,8 +58,11 @@ export const useTodoStore = create<TodoStore>()(
                 completed: todos.filter( todo => todo.completed).length
             }
         }
-    }),{
+    })
+    
+    ,{
         name:'Todo-Storage'
     }
     )
 )
+

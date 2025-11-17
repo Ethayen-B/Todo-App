@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTodoStore } from '../lib/TodoStore';
-import { LuCircle } from 'react-icons/lu';
+
 
 const TodoStats = () => {
 
@@ -13,26 +13,23 @@ const TodoStats = () => {
     const completionPersentage = total ? Math.round((completed / total) * 100) : 0;
 
     interface StatCardProps {
+    className: string,
     title : string,
     value: string | number,
-    icon: React.ComponentType<{className? : string}>,
 }
 
-    const StatCard: React.FC<StatCardProps> = ({title, value}) => {
+    const StatCard: React.FC<StatCardProps> = ({ title, value}) => {
         return(
             <>
-                    <div className="p-2 sm:p-3 rounded-xl bg-white shadow-sm border border-green-100 hover:shadow-md transition-all duration-300 hover:border-green-300 group">
+                    <div className="p-2 sm:p-3 rounded-xl bg-white dark:bg-gray-500 shadow-sm border border-green-100 hover:shadow-md transition-all duration-300 hover:border-green-300 group">
                     <div className="flex items-center justify-center gap-2">
-                        {/* <div className="p-1.5 rounded-lg bg-linear-to-br from-emerald-500/10 to-green-500/10 group-hover:from-emerald-500/20 group-hover:to-green-500/20">
-                            {icon}
-                        </div> */}
-
+                        
                         <div className="min-0 text-center">
-                            <p className="text-lg  sm:text-xl font-bold text-green-700">
+                            <p className="text-lg  sm:text-xl font-bold text-green-700 dark:text-white">
                                 {value}
                             </p>
 
-                            <p className="text-xs text-gray-500 font-medium"> 
+                            <p className="text-xs text-gray-500  dark:text-white/50 font-medium"> 
                                 {title}
                             </p>
                         </div>
@@ -56,10 +53,10 @@ const TodoStats = () => {
         <div className="grid grid-cols-1 gap-4 w-full">
                 <div className=" space-y-4 sm:space-y-6">
                         <div className="grid grid-cols-4  md:grid-cols-2  gap-3 mb-3 ">
-                            <StatCard className="max-w-2xl" title="Total Todos" value={total} icon={<LuCircle className='w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500' />}/> 
-                            <StatCard className="max-w-2xl" title="Pending Todos" value={pending } icon={<LuCircle className='w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500' />}/> 
-                            <StatCard className="max-w-2xl" title="Complited Todos" value={completed} icon={<LuCircle className='w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500' />}/> 
-                            <StatCard className="max-w-2xl" title="Complation Rate" value={`${completionPersentage} %`} icon={<LuCircle className='w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500' />} /> 
+                            <StatCard className="max-w-2xl" title="Total Todos" value={total}/> 
+                            <StatCard className="max-w-2xl" title="Pending Todos" value={pending } /> 
+                            <StatCard className="max-w-2xl" title="Complited Todos" value={completed} /> 
+                            <StatCard className="max-w-2xl" title="Complation Rate" value={`${completionPersentage} %`} /> 
                         </div>
                     
                 </div>

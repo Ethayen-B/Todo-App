@@ -27,14 +27,14 @@ const TodoItems = ({todo} : {todo : Todo}) => {
       }
   
   return (
-    <div className={`flex items-center gap-3 p-3 border rounded-lg ${
-      todo.completed 
+    <div className={`flex items-center dark:bg-gray-400 dark:text-white gap-3 p-3 border rounded-lg 
+      ${ todo.completed 
         ? "bg-gray-50 border-gray-200"
         : "bg-white border-gray-300"    
     }`}>
       <input 
         type="checkbox" 
-        className="w-5 h-5 text-blue-600" 
+        className="w-5 h-5 text-blue-600 " 
         checked={todo.completed} 
         onChange={()=> toggleTodo(todo.id)} />
       
@@ -45,7 +45,7 @@ const TodoItems = ({todo} : {todo : Todo}) => {
             value={editedText} 
             onChange={(e) => setEditedText(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSaveEdit()}
-            className='w-full px-2 py-1 border rounded' 
+            className='w-full dark:bg-gray-700 dark:text-white px-2 py-1 border rounded' 
             autoFocus />
         ) : (
             <span className={`${todo.completed ? "line-through text-gray-500" : "text-gray-800"}`}>
@@ -61,13 +61,13 @@ const TodoItems = ({todo} : {todo : Todo}) => {
         {isEdited ? (
           <>
             <button 
-              className='p-2 text-blue-600 hover:bg-blue-100 hover:rounded-2xl'
+              className='p-2 text-blue-600 dark:text-gray-900 hover:bg-blue-100 hover:rounded-2xl'
               onClick={handleSaveEdit}
               >
                 <BsCheck className='w-6 h-6'/>
               </button>
             <button 
-              className='p-2 text-red-600 hover:bg-red-100 hover:rounded-2xl'
+              className='p-2 text-red-600 dark:text-gray-900 hover:bg-red-100 hover:rounded-2xl'
               onClick={handleCancelEdit}>
                 <BsX className='w-6 h-6'/> 
             </button>
@@ -75,13 +75,13 @@ const TodoItems = ({todo} : {todo : Todo}) => {
         ) : (
           <>
             <button 
-              className='p-2 text-blue-600 hover:bg-blue-100 hover:rounded-2xl'
+              className='p-2 text-blue-600 dark:text-gray-900 hover:bg-blue-100 hover:rounded-2xl'
               onClick={() => setIsEdited(true)}
               >
                 <BsPencil className='w-6 h-6'/>
               </button>
             <button 
-              className='p-2 text-red-600 hover:bg-red-100 hover:rounded-2xl'
+              className='p-2 text-red-600 dark:text-gray-900 hover:bg-red-100 hover:rounded-2xl'
               onClick={() => deleteTodo(todo.id)}>
                 <BsTrash className='w-6 h-6'/> 
             </button>
