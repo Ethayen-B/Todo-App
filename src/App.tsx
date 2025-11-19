@@ -1,12 +1,12 @@
-"use Client"
-
-
 import AddTodoForm from "./components/AddTodoForm";
 import NavBar from "./components/NavBar";
 import TodoItems from "./components/TodoItems";
 import TodoStats from "./components/TodoStats";
 import { useTodoStore } from "./lib/TodoStore";
 import { useThemeStore } from "./lib/ThemeStore";
+import Filters from "./components/Filters";
+import { useState } from "react";
+import type { Todo } from "./types/todo";
 
 
 
@@ -14,6 +14,24 @@ function App() {
   const todos = useTodoStore((state) => state.todos);
   const {theme} = useThemeStore();
 
+  type FilterType = 'All' | 'Pending' | 'Completed'
+    
+  const [filter, setFilter] = useState<FilterType>('All')
+  
+  const getFilterdTodos = (): Todo[] => {
+    switch(filter) {
+      case 'Pending' :
+        return todos.filter(todo => !todo.completed)
+      case 'Completed' :
+        return todos.filter(todo => todo.completed)
+      case 'All':
+      default: 
+        return todos;
+    }
+  }
+ 
+  const visibleTodos = getFilterdTodos();
+  
   return (
     
    <div className={theme}>
@@ -22,7 +40,11 @@ function App() {
       
       <div className="max-w-2xl mx-auto px-4">
         
-        <div className="text-3xl font-bold text-center dark:text-white mb-6">Todo App</div>
+        <div className="text-3xl font-bold flex justify-between dark:text-white mb-6">
+          Todo App
+
+          <Filters setFilter={setFilter} />
+        </div>
           {/* <Layout /> */}
           <AddTodoForm />
           <TodoStats />
@@ -32,7 +54,7 @@ function App() {
             todos.length == 0 ? (
               <p className="text-center text-gray-600 dark:text-gray-100"> No Todos</p>
             ) : (
-              todos.map((todo) => <TodoItems key={todo.id} todo={todo} />)
+              visibleTodos.map((todo) => <TodoItems key={todo.id} todo={todo} />)
             )
           }
         </div>

@@ -52,7 +52,7 @@ const TodoStats = () => {
     <div className=''>
         <div className="grid grid-cols-1 gap-4 w-full">
                 <div className=" space-y-4 sm:space-y-6">
-                        <div className="grid grid-cols-4  md:grid-cols-2  gap-3 mb-3 ">
+                        <div className="grid grid-cols-4 gap-3 mb-3 ">
                             <StatCard className="max-w-2xl" title="Total Todos" value={total}/> 
                             <StatCard className="max-w-2xl" title="Pending Todos" value={pending } /> 
                             <StatCard className="max-w-2xl" title="Complited Todos" value={completed} /> 
