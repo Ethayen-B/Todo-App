@@ -54,7 +54,7 @@ function App() {
             todos.length == 0 ? (
               <p className="text-center text-gray-600 dark:text-gray-100"> No Todos</p>
             ) : (
-              visibleTodos.map((todo) => <TodoItems key={todo.id} todo={todo} />)
+              visibleTodos.map((todo) => <TodoItems key={todo.id} todo={todo}/>)
             )
           }
         </div>

@@ -51,7 +51,13 @@ const TodoItems = ({todo} : {todo : Todo}) => {
             autoFocus />
         ) : (
             <span className={`${todo.completed ? "line-through text-gray-500" : "text-gray-800"}`}>
-                {todo.text}
+                <p className="text-lg">{todo.text}</p>
+                <p className='text-xs'>
+                  <div className="flex justify-between">
+                    <span>{todo.createdAt.toDateString()}</span>
+                    <span>{todo.createdAt.toLocaleTimeString()}</span>
+                  </div>
+                </p>
             </span>
           )
         }
