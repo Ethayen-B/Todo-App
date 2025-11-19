@@ -94,7 +94,7 @@ const TodoItems = ({todo} : {todo : Todo}) => {
                   <BsTrash className='w-14 h-14 text-red-500 dark:text-gray-700 mx-auto' /> 
                 <div className="mx-auto my-4 w-48">
                   <h3 className="text-lg font-black text-gray-800">Confirm Delete</h3>
-                  <p className='text-sm text-gray-50'>
+                  <p className='text-sm text-gray-600 dark:text-gray-50'>
                     Are you sure you want to delete this item?
                   </p>
                 </div>
