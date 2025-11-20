@@ -54,8 +54,8 @@ const TodoItems = ({todo} : {todo : Todo}) => {
                 <p className="text-lg">{todo.text}</p>
                 <p className='text-xs'>
                   <div className="flex justify-between">
-                    <span>{todo.createdAt.toDateString()}</span>
-                    <span>{todo.createdAt.toLocaleTimeString()}</span>
+                    <span>Date: {todo.createdAt.toString().slice(0,10)}</span>
+                    <span>Time: {todo.createdAt.toString().slice(12,19)}</span>
                   </div>
                 </p>
             </span>
